@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<main class="mt-2">
+
+    <div class="container mx-auto px-8 max-w-lg">
+      {% for http_request in http_requests %}
+      <a href="{% url 'admin:book_app_webrequest_change' object_id=http_request.id %}" class="block bg-white my-2 p-2 shadow rounded hover:shadow-lg no-underline text-blue-darker">
+        <div>
+            <!-- title -->
+            {{ http_request.title }}
+        </div>
+        <div>
+          {{ http_request.created }}
+        </div>
+      </a>
+
+      {% endfor %}
+    </div>
+</main>
+{% endblock body %}

@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<main class="mt-2">
+
+    <div class="container mx-auto px-8 max-w-lg">
+      <div class="bg-white my-2 p-2 shadow rounded">
+        <h3>{{ title }} книжки</h3>
+        <form action="" method="post" class="flex flex-col">
+          {% csrf_token %}
+          <div class="flex flex-row text-lg py-2">
+            <label for="{{ form.title.id_for_label }}" class="pr-2">Title</label>
+            {{ form.title }}
+          </div>
+          <div class="flex flex-row text-lg py-2">
+            <label for="{{ form.author.id_for_label }}" class="pr-2">Author</label>
+            {{ form.author }}
+          </div>
+          <div class="flex flex-row text-lg py-2">
+            <label for="{{ form.isbn.id_for_label }}" class="pr-2">ISBN</label>
+            {{ form.isbn }}
+          </div>
+          <div class="flex flex-row text-lg py-2">
+            <label for="{{ form.price.id_for_label }}" class="pr-2">Price</label>
+            {{ form.price }}
+          </div>
+          <div class="flex flex-row text-lg py-2">
+            <label for="{{ form.publish_date.id_for_label }}" class="pr-2">Publish date</label>
+            {{ form.publish_date }}
+          </div>
+          <button type="submit" class="bg-purple-dark hover:bg-purple text-white p-1 rounded">Save</button>
+        </form>
+      </div>
+
+    </div>
+</main>
+{% endblock body %}
+
+{% block additional_js %}
+{% endblock additional_js %}

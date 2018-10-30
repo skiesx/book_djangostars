@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}{{ title }} — books - djangostars{% endblock title %}
+
+
+{% block css %}
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="{% static "static/css/book_djangostars.css" %}"/>
+{% endblock css %}
+
+{% block body_styles %}w-full font-sans bg-grey-lightest text-blue-darker text-teal-dark-selecting{% endblock %}
+
+{% block topbar %}
+<header class="shadow sticky pin-t pin-x select-none z-11">
+    <div class="bg-white">
+      <div class="container mx-auto px-8 max-w-lg">
+        <div class="flex items-center justify-between py-2">
+        <a href="{% url 'list_book_page' %}" class="block text-center text-2xl hover:text-teal no-underline text-teal-dark font-bold">
+          books
+        </a>
+        <div>
+          <a href="{% url 'create_book' %}" class="p-1 bg-purple-dark no-underline text-white rounded text-sm hover:bg-purple font-semibold">Add book</a>
+          <a href="{% url 'admin:index' %}" class="p-1 bg-purple-dark no-underline text-white rounded text-sm hover:bg-purple font-semibold">admin panel</a>
+          <a href="{% url 'http_requests_page' %}" class="p-1 bg-purple-dark no-underline text-white rounded text-sm hover:bg-purple font-semibold">http requests</a>
+        </div>
+    </div>
+  </div>
+</div>
+</header>
+{% endblock %}
+{% block js %}
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script>
+$("input[type='date']").on("change", function() {
+    this.setAttribute("data-date", moment(this.value, "YYYY-MM-DD")
+        .format( this.getAttribute("data-date-format") )
+    );
+    console.log(this.getAttribute("data-date"));
+}).trigger("change")
+</script>
+{% endblock js %}
+{% block footer %}
+<footer class="flex justify-center w-full p-6 flex-auto">
+  <div class="flex items-end">
+    <div class="flex w-full items-center justify-center">
+      <p class="text-center text-grey text-xs">
+        &copy;
+        {% now 'Y' as start_year %}
+        {% if start_year != '2018' %} 2018 - {% endif %}
+        {% now 'Y' %} book_djangostars. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+{% endblock footer %}

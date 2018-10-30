@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="{% block description %}{% endblock description %}">
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% block css %}{% endblock css %}
+</head>
+<body class="{% block body_styles %}{% endblock %} h-full">
+  <div class="flex flex-col h-full">
+{% block topbar %}{% endblock %}
+{% block body %}{% endblock body %}
+{% block popupblocks %}{% endblock popupblocks %}
+{% block footer %}{% endblock footer %}
+{% block js %}{% endblock js %}
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<main class="mt-2">
+  <div class="container mx-auto px-8 max-w-lg">
+    <div class="flex justify-end">
+      <div class="inline-flex">
+        <a href="?sort=asc" class="hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded-l no-underline {% if sort == 'asc' %} bg-grey {% else %}bg-grey-light{% endif %}">
+          asc
+        </a>
+        <a href="?sort=desc" class=" hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded-r no-underline {% if sort == 'desc' %} bg-grey {% else %}bg-grey-light{% endif %}">
+          desc
+        </a>
+      </div>
+    </div>
+    {% for book in books %}
+    <div class="bg-white my-2 p-2 shadow rounded ">
+      <div class="flex flex-row justify-between items-center">
+        <div class="font-bold">
+          <!-- title -->
+          {{ book.title }}
+        </div>
+        <a href="{% url 'edit_book' id_book=book.id %}" class="p-1 bg-teal-dark no-underline text-white rounded text-sm hover:bg-teal">Change</a>
+      </div>
+      <div>
+        <!-- author -->
+        {{ book.author }}
+      </div>
+      <div>
+        <!-- isbn -->
+        {{ book.isbn }}
+      </div>
+      <div>
+        {{ book.price }} uah
+      </div>
+      <div>
+        {{ book.publish_date }}
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</main>
+{% endblock body %}
